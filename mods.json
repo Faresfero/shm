@@ -13,9 +13,8 @@
     "link": "https://sites.google.com/view/shmodsx/mods/0001",
     "type": ["sh"]
   },
-  
   {
-    "name:" "A mod from SHL Publisher",
+    "name": "A mod from SHL Publisher",
     "image": "https://placeholder.com/200x100",
     "invite": 3,
     "link": "https://sites.google.com/view/shmodsx/mods/404",
@@ -26,6 +25,6 @@
     "image": "https://via.placeholder.com/200x100",
     "invite": 2,
     "link": "https://sites.google.com/view/shmodsx/submit",
-    "type": ["sh","shl"]
+    "type": ["sh", "shl"]
   }
 ]
