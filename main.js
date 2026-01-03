@@ -37,7 +37,7 @@
             {
                 name: "Submit your mod here!",
                 image: "https://via.placeholder.com/200x100",
-                invite: 4,
+                invite: 2,
                 link: "https://sites.google.com/view/shmodsx/submit",
                 type: ["sh","shl"]
             }
