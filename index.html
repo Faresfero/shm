@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SM</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <style>
+@font-face{
+  font-family:shmods;
+  src:url("https://cdn.jsdelivr.net/gh/Faresfero/shm@main/sh.woff2") format("woff2");
+}
+@media (max-width: 600px) {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+}
+
+
         body {
             /* prefer a generic fallback and control weight with font-weight */
-            font-family: 'Roboto', sans-serif;
+            font-family: 'shmods', sans-serif;
             background-color: #1e1f22;
             color: white;
             text-align: center;
@@ -39,6 +53,7 @@ h1 {
             justify-content: center;
             gap: 10px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         .filter-btn {
             background-color: #2b2d31;
@@ -132,9 +147,8 @@ h1 {
     <div class="filters">
         <!-- data-category used by JS listeners -->
         <button type="button" class="filter-btn" data-category="all">All</button>
-        <button type="button" class="filter-btn" data-category="and">Android</button>
-        <button type="button" class="filter-btn" data-category="ios">iOS</button>
-        <button type="button" class="filter-btn" data-category="both">Android & iOS</button>
+        <button type="button" class="filter-btn" data-category="sh">shmods Host</button>
+        <button type="button" class="filter-btn" data-category="shl">SHL Host</button>
     </div>
 
     <h2></h2>
@@ -154,8 +168,18 @@ h1 {
 
 
 
-    <!-- Load server-hosted JavaScript from GitHub raw URL (replace if needed) -->
-    <script src="https://raw.githack.com/Faresfero/shm/main/main.js"></script>
+<script src="https://cdn.statically.io/gh/Faresfero/shm@refs/heads/main/main.js"></script>
 
+<script>
+  setInterval(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.statically.io/gh/Faresfero/shm@refs/heads/main/main.js?' + new Date().getTime();
+    document.body.appendChild(script);
+  }, 30000);
+</script>
 </body>
 </html>
+<!-- 
+//        <button type="button" class="filter-btn" data-category="ios">iOS</button>
+//        <button type="button" class="filter-btn" data-category="both">Android & iOS</button>
+-->
