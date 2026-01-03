@@ -1,5 +1,23 @@
 [
   {
+    "id": 1,
+    "name": "OL EPIC YT",
+    "type": 1,
+    "isVerified": true
+  },
+  {
+    "id": 2,
+    "name": "SHL example",
+    "type": 1,
+    "isVerified": false
+  },
+  {
+    "id": 3,
+    "name": "Example",
+    "type": 1,
+    "isVerified": true
+  },
+  {
     "id": 4,
     "name": "source",
     "type": 1,
