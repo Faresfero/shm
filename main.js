@@ -34,13 +34,6 @@
                 link: "https://sites.google.com/view/shmodsx/mods/404",
                 type: ["shl"]
             },
-                     {
-                name: "A mod from SHL Publisher",
-                image: "https://placeholder.com/200x100",
-                invite: 3,
-                link: "https://sites.google.com/view/shmodsx/mods/404",
-                type: ["shl"]
-            },
             {
                 name: "Submit your mod here!",
                 image: "https://via.placeholder.com/200x100",
