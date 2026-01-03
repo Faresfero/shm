@@ -1,7 +1,7 @@
  // Developer note: this script handles rendering, filtering and searching of mods.
     document.addEventListener('DOMContentLoaded', () => {
         // URL to a GitHub raw JSON file with user data. Replace with your raw URL or leave empty to use the local fallback.
-        const USER_DB_URL = ""; // e.g. https://raw.githubusercontent.com/<user>/<repo>/main/users.json
+        const USER_DB_URL = "https://raw.githack.com/Faresfero/shm/refs/heads/main/database.json"; // e.g. https://raw.githubusercontent.com/<user>/<repo>/main/users.json
 
         // Fallback local user DB. Structure: { id, name, type, isVerified }
         
@@ -37,7 +37,7 @@
             {
                 name: "Submit your mod here!",
                 image: "https://via.placeholder.com/200x100",
-                invite: 2,
+                invite: 4,
                 link: "https://sites.google.com/view/shmodsx/submit",
                 type: ["sh","shl"]
             }
