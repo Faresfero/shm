@@ -4,33 +4,42 @@
         const USER_DB_URL = ""; // e.g. https://raw.githubusercontent.com/<user>/<repo>/main/users.json
 
         // Fallback local user DB. Structure: { id, name, type, isVerified }
+        
         const fallbackUsers = [
             { id: 1, name: 'OLEPICYT', type: 1, isVerified: true },
-            { id: 2, name: 'MODSUBMIT', type: 3, isVerified: false }
+            { id: 2, name: 'this could be you🤯🤯', type: 0, isVerified: false },
+            { id: 3, name: 'SHL Publisher', type: 4, isVerified: false },
         ];
 
         // Servers reference users by numeric id in `invite`.
         const servers = [
             {
-                name: "Smash hit NULL ✪",
+                name: "Smash hit NULL",
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2pg8ZlEDXd04EP_8_Mx6DYeDy-Bn7h6-LEXIlGb9TN4CpRpVAux-wBZiz01dQGsS9qVc&usqp=CAU",
                 invite: 1,
                 link: "https://sites.google.com/view/shmodsx/mods/0002",
-                type: ["and"]
+                type: ["sh"]
             },
             {
                 name: "Smash hit Future",
                 image: "https://i.ytimg.com/vi/cgypxTgTySE/maxresdefault.jpg",
                 invite: 1,
                 link: "https://sites.google.com/view/shmodsx/mods/0001",
-                type: ["and"]
+                type: ["sh"]
+            },
+             {
+                name: "A mod from SHL Publisher",
+                image: "https://placeholder.com/200x100",
+                invite: 3,
+                link: "https://sites.google.com/view/shmodsx/mods/404",
+                type: ["shl"]
             },
             {
                 name: "Submit your mod here!",
                 image: "https://via.placeholder.com/200x100",
                 invite: 2,
                 link: "https://sites.google.com/view/shmodsx/submit",
-                type: ["both"]
+                type: ["sh","shl"]
             }
         ];
 
@@ -42,6 +51,7 @@
             .role-supervisor { background:#8a2be2; color:white; }
             .role-staff { background:#ff9800; color:black; }
             .role-member { background:#b9bbbe; color:#012; }
+            .role-SHL { background:#FF000 ; color:blue; }
             .username { font-weight:600; margin-right:6px; }
             .user-row { display:flex; align-items:center; gap:8px; }
         `;
@@ -58,16 +68,18 @@
                 case 1: return 'role-owner';
                 case 2: return 'role-supervisor';
                 case 3: return 'role-staff';
+                case 4: return 'role-SHL';
                 default: return 'role-member';
             }
         }
 
         function roleLabel(type) {
             switch (type) {
-                case 1: return 'Owner';
+                case 1: return 'Owner Of SHM';
                 case 2: return 'Supervisor';
                 case 3: return 'Staff';
-                default: return 'Member';
+                case 4: return 'SHL Publisher';
+                default: return 'Publisher';
             }
         }
 
