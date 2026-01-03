@@ -1,183 +1,185 @@
- // Developer note: this script handles rendering, filtering and searching of mods.
-    document.addEventListener('DOMContentLoaded', () => {
-        // URL to a GitHub raw JSON file with user data. Replace with your raw URL or leave empty to use the local fallback.
-        const USER_DB_URL = "https://raw.githack.com/Faresfero/shm/refs/heads/main/database.json"; // e.g. https://raw.githubusercontent.com/<user>/<repo>/main/users.json
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-        // Fallback local user DB. Structure: { id, name, type, isVerified }
-        
-        const fallbackUsers = [
-            { id: 1, name: 'OLEPICYT', type: 1, isVerified: true },
-            { id: 2, name: 'this could be you🤯🤯', type: 0, isVerified: false },
-            { id: 3, name: 'SHL Publisher', type: 4, isVerified: false },
-        ];
+    <style>
+@font-face{
+  font-family:shmods;
+  src:url("https://cdn.jsdelivr.net/gh/Faresfero/shm@main/sh.woff2") format("woff2");
+}
+@media (max-width: 600px) {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 
-        // Servers reference users by numeric id in `invite`.
-        const servers = [
-            {
-                name: "Smash hit NULL",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2pg8ZlEDXd04EP_8_Mx6DYeDy-Bn7h6-LEXIlGb9TN4CpRpVAux-wBZiz01dQGsS9qVc&usqp=CAU",
-                invite: 1,
-                link: "https://sites.google.com/view/shmodsx/mods/0002",
-                type: ["sh"]
-            },
-            {
-                name: "Smash hit Future",
-                image: "https://i.ytimg.com/vi/cgypxTgTySE/maxresdefault.jpg",
-                invite: 1,
-                link: "https://sites.google.com/view/shmodsx/mods/0001",
-                type: ["sh"]
-            },
-             {
-                name: "A mod from SHL Publisher",
-                image: "https://placeholder.com/200x100",
-                invite: 3,
-                link: "https://sites.google.com/view/shmodsx/mods/404",
-                type: ["shl"]
-            },
-            {
-                name: "Submit your mod here!",
-                image: "https://via.placeholder.com/200x100",
-                invite: 4,
-                link: "https://sites.google.com/view/shmodsx/submit",
-                type: ["sh","shl"]
-            }
-        ];
+  .filter-btn {
+    width: 100%;
+  }
+}
 
-        // CSS for role badges
-        const style = document.createElement('style');
-        style.textContent = `
-            .user-badge { display:inline-block; margin-left:6px; padding:2px 6px; border-radius:6px; font-size:12px; vertical-align:middle; }
-            .role-owner { background:#bfefff; color:#012; }
-            .role-supervisor { background:#8a2be2; color:white; }
-            .role-staff { background:#ff9800; color:black; }
-            .role-member { background:#b9bbbe; color:#012; }
-            .role-SHL { background:#FF000 ; color:blue; }
-            .username { font-weight:600; margin-right:6px; }
-            .user-row { display:flex; align-items:center; gap:8px; }
-        `;
-        document.head.appendChild(style);
 
-        const serverList = document.getElementById('server-list');
-        const searchInput = document.getElementById('search-input');
-        const noResults = document.getElementById('no-results');
-        let activeCategory = 'all';
-        let usersMap = {};
-
-        function roleClass(type) {
-            switch (type) {
-                case 1: return 'role-owner';
-                case 2: return 'role-supervisor';
-                case 3: return 'role-staff';
-                case 4: return 'role-SHL';
-                default: return 'role-member';
-            }
+        body {
+            /* prefer a generic fallback and control weight with font-weight */
+            font-family: 'shmods', sans-serif;
+            background-color: #1e1f22;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
-
-        function roleLabel(type) {
-            switch (type) {
-                case 1: return 'Owner Of SHM';
-                case 2: return 'Supervisor';
-                case 3: return 'Staff';
-                case 4: return 'SHL Publisher';
-                default: return 'Publisher';
-            }
+h1 {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+        .subtext {
+            color: #b9bbbe;
+            margin-bottom: 20px;
         }
-
-        function renderUserInfo(userId) {
-            const u = usersMap[userId];
-            if (!u) return '<span class="server-invite">Unknown</span>';
-            const checked = u.isVerified ? ' ✓' : '';
-            const badge = `<span class="user-badge ${roleClass(u.type)}">${roleLabel(u.type)}</span>`;
-            return `
-                <div class="user-row">
-                    <span class="username">${u.name}${u.isVerified ? ' ✓' : ''}</span>
-                    ${badge}
-                </div>
-            `;
+        .search-bar {
+            background-color: #2b2d31;
+            border: none;
+            padding: 10px;
+            width: 60%;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
-
-        function generateServers(list = []) {
-            serverList.innerHTML = '';
-            if (!list.length) return;
-            list.forEach(server => {
-                const card = document.createElement('div');
-                card.className = 'server-card';
-                const userInfoHTML = renderUserInfo(server.invite);
-                card.innerHTML = `
-                    <img src="${server.image}" alt="${server.name}" loading="lazy" width="220" height="120">
-                    <div class="server-info">
-                        <a href="${server.link}" target="_blank" rel="noopener noreferrer" class="server-name">${server.name}</a>
-                        <div class="server-invite">${userInfoHTML}</div>
-                        <a href="${server.link}" target="_blank" rel="noopener noreferrer" class="join-btn">Install!</a>
-                    </div>
-                `;
-                serverList.appendChild(card);
-            });
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
-
-        function debounce(fn, wait = 200) {
-            let t;
-            return (...args) => {
-                clearTimeout(t);
-                t = setTimeout(() => fn(...args), wait);
-            };
+        .filter-btn {
+            background-color: #2b2d31;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            color: white;
         }
-
-        function performSearch() {
-            const q = (searchInput.value || '').trim().toLowerCase();
-            let filtered = servers.filter(s => {
-                const name = s.name ? s.name.toLowerCase() : '';
-                const user = usersMap[s.invite];
-                const username = user && user.name ? user.name.toLowerCase() : '';
-                const inviteType = Array.isArray(s.type) ? s.type.join(' ') : '';
-                return (!q || name.includes(q) || username.includes(q) || inviteType.includes(q));
-            });
-            if (activeCategory !== 'all') {
-                filtered = filtered.filter(s => Array.isArray(s.type) && s.type.includes(activeCategory));
-            }
-            serverList.innerHTML = '';
-            if (!filtered.length) {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-                generateServers(filtered);
-            }
+        .filter-btn:hover {
+            background-color: #5865F2;
         }
-
-        const debouncedSearch = debounce(performSearch, 180);
-
-        // Attach search listener
-        searchInput.addEventListener('input', debouncedSearch);
-
-        // Attach filter button listeners
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                activeCategory = btn.dataset.category || 'all';
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                performSearch();
-            });
-        });
-
-        // Load user DB from GitHub raw or fallback
-        async function loadUsers() {
-            try {
-                if (USER_DB_URL) {
-                    const res = await fetch(USER_DB_URL);
-                    if (!res.ok) throw new Error('Network response not ok');
-                    const list = await res.json();
-                    list.forEach(u => usersMap[u.id] = u);
-                    return;
-                }
-            } catch (e) {
-                console.warn('Failed to load user DB from GitHub, using fallback', e);
-            }
-            // fallback
-            fallbackUsers.forEach(u => usersMap[u.id] = u);
+        .servers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
+        .server-card {
+            background-color: #23272a;
+            width: 220px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            transition: 0.3s;
+        }
+        .server-card:hover {
+            background-color: #2b2d31;
+        }
+        .server-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .server-info {
+            margin-top: 10px;
+        }
+        .server-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #7289da;
+            text-decoration: none;
+        }
+        .server-invite {
+            color: #b9bbbe;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .join-btn {
+            display: block;
+            background-color: #5865F2;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .join-btn:hover {
+            background-color: #4752C4;
+            transform: scale(1.05);
+        }
+        .publish-btn {
+            background-color: #5865F2;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .publish-btn:hover {
+            background-color: #4752C4;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
 
-        // Initialize
-        loadUsers().then(() => {
-            generateServers(servers);
-        });
-    });
+    <h1>shmods</h1>
+    <p class="subtext">Explore smash hit mods!</p>
+    <!-- Accessible search input: use id + aria-label and debounce in JS -->
+    <input id="search-input" type="search" class="search-bar" placeholder="Search smash hit mods or user" aria-label="Search mods"> 
+    <div class="filters">
+        <!-- data-category used by JS listeners -->
+        <button type="button" class="filter-btn" data-category="all">All</button>
+        <button type="button" class="filter-btn" data-category="sh">shmods Host</button>
+        <button type="button" class="filter-btn" data-category="shl">SHL Host</button>
+    </div>
+
+    <h2></h2>
+
+    <div class="servers" id="server-list"></div>
+    <div id="no-results" style="color:#b9bbbe; margin-top:12px; display:none;">No mods found.</div>
+
+<p>Want to Publish your smash hit mod?  
+    <a class="publish-btn" href="https://sites.google.com/view/shmods/submit" target="_blank" rel="noopener noreferrer">
+        Click Here
+    </a>
+
+</p>
+<p style="color: gray;">
+    Made by source
+</p>
+
+
+
+<script src="https://cdn.statically.io/gh/Faresfero/shm@refs/heads/main/main.js"></script>
+
+<script>
+  setInterval(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.statically.io/gh/Faresfero/shm@refs/heads/main/main.js?' + new Date().getTime();
+    document.body.appendChild(script);
+  }, 30000);
+</script>
+</body>
+</html>
+<!-- 
+//        <button type="button" class="filter-btn" data-category="ios">iOS</button>
+//        <button type="button" class="filter-btn" data-category="both">Android & iOS</button>
+-->
