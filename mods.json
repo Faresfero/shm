@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Smash hit NULL",
+    "image": "https://example.com/null.jpg",
+    "invite": 1,
+    "link": "https://sites.google.com/view/shmodsx/mods/0002",
+    "type": ["sh"]
+  },
+  {
+    "name": "Smash hit Future",
+    "image": "https://example.com/future.jpg",
+    "invite": 1,
+    "link": "https://sites.google.com/view/shmodsx/mods/0001",
+    "type": ["sh"]
+  }
+  
+  {
+    "name:" "A mod from SHL Publisher",
+    "image": "https://placeholder.com/200x100",
+    "invite": 3,
+    "link": "https://sites.google.com/view/shmodsx/mods/404",
+    "type": ["shl"]
+  },
+  {
+    "name": "Submit your mod here!",
+    "image": "https://via.placeholder.com/200x100",
+    "invite": 2,
+    "link": "https://sites.google.com/view/shmodsx/submit",
+    "type": ["sh","shl"]
+  }
+]
