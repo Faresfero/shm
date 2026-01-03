@@ -7,15 +7,15 @@
   },
   {
     "id": 2,
-    "name": "SHL example",
-    "type": 1,
+    "name": "Example user",
+    "type": 0,
     "isVerified": false
   },
   {
     "id": 3,
-    "name": "Example",
-    "type": 1,
-    "isVerified": true
+    "name": "SHL",
+    "type": 4,
+    "isVerified": false
   },
   {
     "id": 4,
