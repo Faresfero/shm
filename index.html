@@ -39,6 +39,7 @@ h1 {
             margin-bottom: 20px;
         }
         .search-bar {
+            font-family: 'shmods', sans-serif;
             background-color: #2b2d31;
             border: none;
             padding: 10px;
@@ -56,6 +57,7 @@ h1 {
             flex-wrap: wrap;
         }
         .filter-btn {
+            font-family: 'shmods', sans-serif;
             background-color: #2b2d31;
             padding: 8px 12px;
             border-radius: 5px;
@@ -147,6 +149,7 @@ h1 {
     <div class="filters">
         <!-- data-category used by JS listeners -->
         <button type="button" class="filter-btn" data-category="all">All</button>
+        <button type="button" class="filter-btn" data-category="F">Featured</button>
         <button type="button" class="filter-btn" data-category="sh">shmods Host</button>
         <button type="button" class="filter-btn" data-category="shl">SHL Host</button>
     </div>
@@ -163,12 +166,14 @@ h1 {
 
 </p>
 <p style="color: gray;">
-    Made by source
+    Made by source and the aetherLabs Team
+</p>
+<p style="color: gray;">Partnered with... yeah no we are not partnered with anyone yet :(
 </p>
 
 
 
-<script src="https://cdn.statically.io/gh/Faresfero/shm@refs/heads/main/main.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Faresfero/shm@refs/heads/main/main.js"></script>
 
 <script>
   setInterval(() => {
