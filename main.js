@@ -31,7 +31,7 @@
                 name: "Ultra Smash Hit Warlock 2",
                 image: "https://i.ytimg.com/vi/cgypxTgTySE/maxresdefault.jpg",
                 invite: 7,
-                link: "https://sites.google.com/view/shmodsx/mods/0001",
+                link: "https://sites.google.com/view/shmodsx/mods/404",
                 type: ["sh"]
             },
              {
