@@ -13,6 +13,13 @@
 
         // Servers reference users by numeric id in `invite`.
         const servers = [
+                     {
+                name: "Ultra Smash Hit Warlock 2",
+                image: "https://i.ytimg.com/vi/cgypxTgTySE/maxresdefault.jpg",
+                invite: 7,
+                link: "https://sites.google.com/view/shmodsx/mods/0003",
+                type: ["sh","F"]
+            },
             {
                 name: "Smash hit NULL",
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2pg8ZlEDXd04EP_8_Mx6DYeDy-Bn7h6-LEXIlGb9TN4CpRpVAux-wBZiz01dQGsS9qVc&usqp=CAU",
@@ -25,13 +32,6 @@
                 image: "https://i.ytimg.com/vi/cgypxTgTySE/maxresdefault.jpg",
                 invite: 1,
                 link: "https://sites.google.com/view/shmodsx/mods/0001",
-                type: ["sh"]
-            },
-            {
-                name: "Ultra Smash Hit Warlock 2",
-                image: "https://i.ytimg.com/vi/cgypxTgTySE/maxresdefault.jpg",
-                invite: 7,
-                link: "https://sites.google.com/view/shmodsx/mods/0003",
                 type: ["sh"]
             },
              {
