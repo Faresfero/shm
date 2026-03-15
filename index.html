@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <style>
+<style>
 @font-face{
   font-family:shmods;
   src:url("https://cdn.jsdelivr.net/gh/Faresfero/shm@main/sh.woff2") format("woff2");
 }
+
+/* mobile layout */
 @media (max-width: 600px) {
   .filters {
     display: grid;
@@ -17,128 +18,179 @@
   .filter-btn {
     width: 100%;
   }
+
+  .search-bar{
+    width: 90%;
+  }
+
+  h1{
+    font-size:48px;
+  }
 }
 
+body {
+    font-family: 'shmods', sans-serif;
+    background: radial-gradient(circle at top, #2b2d31, #1e1f22);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin:0;
+}
 
-        body {
-            /* prefer a generic fallback and control weight with font-weight */
-            font-family: 'shmods', sans-serif;
-            background-color: #1e1f22;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+/* title */
 h1 {
   font-size: 72px;
-  background: -webkit-linear-gradient(#eee, #333);
+  background: linear-gradient(180deg,#ffffff,#6d6f78);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom:5px;
 }
-        .subtext {
-            color: #b9bbbe;
-            margin-bottom: 20px;
-        }
-        .search-bar {
-            font-family: 'shmods', sans-serif;
-            background-color: #2b2d31;
-            border: none;
-            padding: 10px;
-            width: 60%;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            font-family: 'shmods', sans-serif;
-            background-color: #2b2d31;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-            color: white;
-        }
-        .filter-btn:hover {
-            background-color: #5865F2;
-        }
-        .servers {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-        .server-card {
-            background-color: #23272a;
-            width: 220px;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: left;
-            transition: 0.3s;
-        }
-        .server-card:hover {
-            background-color: #2b2d31;
-        }
-        .server-card img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        .server-info {
-            margin-top: 10px;
-        }
-        .server-name {
-            font-size: 16px;
-            font-weight: bold;
-            color: #7289da;
-            text-decoration: none;
-        }
-        .server-invite {
-            color: #b9bbbe;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-        .join-btn {
-            display: block;
-            background-color: #5865F2;
-            color: white;
-            text-align: center;
-            padding: 8px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .join-btn:hover {
-            background-color: #4752C4;
-            transform: scale(1.05);
-        }
-        .publish-btn {
-            background-color: #5865F2;
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .publish-btn:hover {
-            background-color: #4752C4;
-            transform: scale(1.1);
-        }
-    </style>
+
+.subtext {
+    color: #b9bbbe;
+    margin-bottom: 20px;
+}
+
+/* search */
+.search-bar {
+    font-family: 'shmods', sans-serif;
+    background-color: #2b2d31;
+    border: 1px solid #3a3d42;
+    padding: 12px;
+    width: 60%;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    outline:none;
+    transition:0.25s;
+}
+
+.search-bar:focus{
+    border-color:#5865F2;
+    box-shadow:0 0 0 2px rgba(88,101,242,0.25);
+}
+
+/* filters */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    font-family: 'shmods', sans-serif;
+    background-color: #2b2d31;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+    border: 1px solid #3a3d42;
+    color: white;
+}
+
+.filter-btn:hover {
+    background-color: #5865F2;
+    border-color:#5865F2;
+    transform:translateY(-1px);
+}
+
+/* server grid */
+.servers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* server card */
+.server-card {
+    background-color: #23272a;
+    width: 220px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    transition: 0.25s;
+    border:1px solid #2f3136;
+}
+
+.server-card:hover {
+    background-color: #2b2d31;
+    transform: translateY(-4px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+
+.server-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.server-info {
+    margin-top: 10px;
+}
+
+/* server name */
+.server-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #7289da;
+    text-decoration: none;
+    transition:0.2s;
+}
+
+.server-name:hover{
+    text-decoration:underline;
+}
+
+/* invite text */
+.server-invite {
+    color: #b9bbbe;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* join button */
+.join-btn {
+    display: block;
+    background: linear-gradient(135deg,#5865F2,#4752C4);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.join-btn:hover {
+    transform: scale(1.05);
+    box-shadow:0 4px 12px rgba(88,101,242,0.5);
+}
+
+/* publish button */
+.publish-btn {
+    background: linear-gradient(135deg,#5865F2,#4752C4);
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.publish-btn:hover {
+    transform: scale(1.08);
+    box-shadow:0 4px 12px rgba(88,101,242,0.5);
+}
+</style>
 </head>
 <body>
 
@@ -176,11 +228,203 @@ h1 {
 <script src="https://cdn.jsdelivr.net/gh/Faresfero/shm@refs/heads/main/main.js"></script>
 
 <script>
-  setInterval(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.statically.io/gh/Faresfero/shm@refs/heads/main/main.js?' + new Date().getTime();
-    document.body.appendChild(script);
-  }, 30000);
+// Developer note: this script handles rendering, filtering and searching of mods.
+    document.addEventListener('DOMContentLoaded', () => {
+        // URL to a GitHub raw JSON file with user data. Replace with your raw URL or leave empty to use the local fallback.
+        const USER_DB_URL = "https://rawcdn.githack.com/Faresfero/shm/d079365e1232028287490a83a2cc4715d9524b45/database.json"; // e.g. https://raw.githubusercontent.com/<user>/<repo>/main/users.json
+
+        // Fallback local user DB. Structure: { id, name, type, isVerified }
+        
+        const fallbackUsers = [
+            { id: 1, name: 'OLEPICYT', type: 1, isVerified: true },
+            { id: 2, name: 'this could be you🤯🤯', type: 0, isVerified: false },
+            { id: 3, name: 'SHL Publisher', type: 4, isVerified: false },
+        ];
+
+        // Servers reference users by numeric id in `invite`.
+        const servers = [
+              {
+                name: "Smash Hit: 10 Checkpoints Mod",
+                image: "https://i.ytimg.com/vi/GZSl9RskOuo/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAoBmWWDPhIgDsinroQ440Kgp4AXw",
+                invite: 5,
+                link: "https://sites.google.com/view/shmodsx/mods/0004",
+                type: ["sh","F"]
+            },
+                     {
+                name: "Ultra Smash Hit Warlock 2",
+                image: "https://media.discordapp.net/attachments/1481150603068702752/1481506024925167759/Untitled70_20260213105843.png?ex=69b38f81&is=69b23e01&hm=e7954a5aaa32d2b6e2e4390f97bb3b95c0a147bdfa54c121ca959a5e1a7f1d82&=&format=webp&quality=lossless",
+                invite: 7,
+                link: "https://sites.google.com/view/shmodsx/mods/0003",
+                type: ["sh","F"]
+            },
+            {
+                name: "Smash hit NULL",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2pg8ZlEDXd04EP_8_Mx6DYeDy-Bn7h6-LEXIlGb9TN4CpRpVAux-wBZiz01dQGsS9qVc&usqp=CAU",
+                invite: 5,
+                link: "https://sites.google.com/view/shmodsx/mods/0002",
+                type: ["sh"]
+            },
+            {
+                name: "Smash hit Future",
+                image: "https://i.ytimg.com/vi/cgypxTgTySE/maxresdefault.jpg",
+                invite: 1,
+                link: "https://sites.google.com/view/shmodsx/mods/0001",
+                type: ["sh"]
+            },
+             {
+                name: "A mod from SHL Publisher",
+                image: "https://placeholder.com/200x100",
+                invite: 3,
+                link: "https://sites.google.com/view/shmodsx/mods/404",
+                type: ["shl"]
+            },
+            {
+                name: "Submit your mod here!",
+                image: "https://via.placeholder.com/200x100",
+                invite: 2,
+                link: "https://sites.google.com/view/shmodsx/submit",
+                type: ["sh","shl"]
+            }
+        ];
+
+        // CSS for role badges
+        const style = document.createElement('style');
+        style.textContent = `
+            .user-badge { display:inline-block; margin-left:6px; padding:2px 6px; border-radius:6px; font-size:12px; vertical-align:middle; }
+            .role-owner { background:#bfefff; color:#012; }
+            .role-supervisor { background:#8a2be2; color:white; }
+            .role-staff { background:#ff9800; color:black; }
+            .role-member { background:#b9bbbe; color:#012; }
+            .role-SHL { background:#FF000 ; color:blue; }
+            .username { font-weight:600; margin-right:6px; }
+            .user-row { display:flex; align-items:center; gap:8px; }
+        `;
+        document.head.appendChild(style);
+
+        const serverList = document.getElementById('server-list');
+        const searchInput = document.getElementById('search-input');
+        const noResults = document.getElementById('no-results');
+        let activeCategory = 'all';
+        let usersMap = {};
+
+        function roleClass(type) {
+            switch (type) {
+                case 1: return 'role-owner';
+                case 2: return 'role-supervisor';
+                case 3: return 'role-staff';
+                case 4: return 'role-SHL';
+                default: return 'role-member';
+            }
+        }
+
+        function roleLabel(type) {
+            switch (type) {
+                case 1: return 'Owner Of SHM';
+                case 2: return 'Supervisor';
+                case 3: return 'Staff';
+                case 4: return 'SHL Publisher';
+                default: return 'Publisher';
+            }
+        }
+
+        function renderUserInfo(userId) {
+            const u = usersMap[userId];
+            if (!u) return '<span class="server-invite">Unknown</span>';
+            const checked = u.isVerified ? ' ✓' : '';
+            const badge = `<span class="user-badge ${roleClass(u.type)}">${roleLabel(u.type)}</span>`;
+            return `
+                <div class="user-row">
+                    <span class="username">${u.name}${u.isVerified ? ' ✓' : ''}</span>
+                    ${badge}
+                </div>
+            `;
+        }
+
+        function generateServers(list = []) {
+            serverList.innerHTML = '';
+            if (!list.length) return;
+            list.forEach(server => {
+                const card = document.createElement('div');
+                card.className = 'server-card';
+                const userInfoHTML = renderUserInfo(server.invite);
+                card.innerHTML = `
+                    <img src="${server.image}" alt="${server.name}" loading="lazy" width="220" height="120">
+                    <div class="server-info">
+                        <a href="${server.link}" target="_blank" rel="noopener noreferrer" class="server-name">${server.name}</a>
+                        <div class="server-invite">${userInfoHTML}</div>
+                        <a href="${server.link}" target="_blank" rel="noopener noreferrer" class="join-btn">Install!</a>
+                    </div>
+                `;
+                serverList.appendChild(card);
+            });
+        }
+
+        function debounce(fn, wait = 200) {
+            let t;
+            return (...args) => {
+                clearTimeout(t);
+                t = setTimeout(() => fn(...args), wait);
+            };
+        }
+
+        function performSearch() {
+            const q = (searchInput.value || '').trim().toLowerCase();
+            let filtered = servers.filter(s => {
+                const name = s.name ? s.name.toLowerCase() : '';
+                const user = usersMap[s.invite];
+                const username = user && user.name ? user.name.toLowerCase() : '';
+                const inviteType = Array.isArray(s.type) ? s.type.join(' ') : '';
+                return (!q || name.includes(q) || username.includes(q) || inviteType.includes(q));
+            });
+            if (activeCategory !== 'all') {
+                filtered = filtered.filter(s => Array.isArray(s.type) && s.type.includes(activeCategory));
+            }
+            serverList.innerHTML = '';
+            if (!filtered.length) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+                generateServers(filtered);
+            }
+        }
+
+        const debouncedSearch = debounce(performSearch, 180);
+
+        // Attach search listener
+        searchInput.addEventListener('input', debouncedSearch);
+
+        // Attach filter button listeners
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeCategory = btn.dataset.category || 'all';
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                performSearch();
+            });
+        });
+
+        // Load user DB from GitHub raw or fallback
+        async function loadUsers() {
+            try {
+                if (USER_DB_URL) {
+                    const res = await fetch(USER_DB_URL);
+                    if (!res.ok) throw new Error('Network response not ok');
+                    const list = await res.json();
+                    list.forEach(u => usersMap[u.id] = u);
+                    return;
+                }
+            } catch (e) {
+                console.warn('Failed to load user DB from GitHub, using fallback', e);
+            }
+            // fallback
+            fallbackUsers.forEach(u => usersMap[u.id] = u);
+        }
+
+        // Initialize
+        loadUsers().then(() => {
+            generateServers(servers);
+        });
+    });
 </script>
 </body>
 </html>
