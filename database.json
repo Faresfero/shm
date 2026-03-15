@@ -26,8 +26,8 @@
   {
     "id": 5,
     "name": "Den1136",
-    "type": 0,
-    "isVerified": false
+    "type": 1,
+    "isVerified": true
   },
   {
     "id": 6,
