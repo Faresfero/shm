@@ -1,7 +1,7 @@
- // Developer note: this script handles rendering, filtering and searching of mods.
+// Developer note: this script handles rendering, filtering and searching of mods.
     document.addEventListener('DOMContentLoaded', () => {
         // URL to a GitHub raw JSON file with user data. Replace with your raw URL or leave empty to use the local fallback.
-        const USER_DB_URL = "https://cdn.jsdelivr.net/gh/Faresfero/shm@refs/heads/main/database.json"; // e.g. https://raw.githubusercontent.com/<user>/<repo>/main/users.json
+        const USER_DB_URL = "https://rawcdn.githack.com/Faresfero/shm/d079365e1232028287490a83a2cc4715d9524b45/database.json"; // e.g. https://raw.githubusercontent.com/<user>/<repo>/main/users.json
 
         // Fallback local user DB. Structure: { id, name, type, isVerified }
         
@@ -13,9 +13,23 @@
 
         // Servers reference users by numeric id in `invite`.
         const servers = [
+                  {
+                name: "Smash Hit: Decal Edition",
+                image: "https://rawcdn.githack.com/Faresfero/shm-mods/refs/heads/main/New%20Project(1).png",
+                invite: 7,
+                link: "https://sites.google.com/view/shmodsx/mods/0005",
+                type: ["sh","F"]
+            },
+              {
+                name: "Smash Hit: 10 Checkpoints Mod",
+                image: "https://i.ytimg.com/vi/GZSl9RskOuo/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAoBmWWDPhIgDsinroQ440Kgp4AXw",
+                invite: 5,
+                link: "https://sites.google.com/view/shmodsx/mods/0004",
+                type: ["sh","F"]
+            },
                      {
                 name: "Ultra Smash Hit Warlock 2",
-                image: "https://i.ytimg.com/vi/cgypxTgTySE/maxresdefault.jpg",
+                image: "https://rawcdn.githack.com/Faresfero/shm/72c9b2af48abfe38d3a400d8176d1c353ed60378/download.webp",
                 invite: 7,
                 link: "https://sites.google.com/view/shmodsx/mods/0003",
                 type: ["sh","F"]
@@ -23,7 +37,7 @@
             {
                 name: "Smash hit NULL",
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2pg8ZlEDXd04EP_8_Mx6DYeDy-Bn7h6-LEXIlGb9TN4CpRpVAux-wBZiz01dQGsS9qVc&usqp=CAU",
-                invite: 1,
+                invite: 5,
                 link: "https://sites.google.com/view/shmodsx/mods/0002",
                 type: ["sh"]
             },
