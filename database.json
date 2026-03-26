@@ -40,5 +40,11 @@
     "name": "Abhy S.O.M.",
     "type": 0,
     "isVerified": true
+  },
+    {
+    "id": 8,
+    "name": "Daniil smash hit mods developer",
+    "type": 0,
+    "isVerified": false
   }
 ]
