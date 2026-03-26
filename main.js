@@ -11,8 +11,16 @@
             { id: 3, name: 'SHL Publisher', type: 4, isVerified: false },
         ];
 
+
         // Servers reference users by numeric id in `invite`.
         const servers = [
+                  {
+                name: "Smash Hit Hardcore",
+                image: "https://rawcdn.githack.com/Faresfero/shm-mods/84b73ed1d8a3021d9d02c0cae92df4b2ed1d41ae/Screenshot_2025-12-30-19-35-05-157_com.mediocre.smashhithardcorelevel(1).jpg",
+                invite: 8,
+                link: "https://sites.google.com/view/shmodsx/mods/0006",
+                type: ["sh","F"]
+            },
                   {
                 name: "Smash Hit: Decal Edition",
                 image: "https://rawcdn.githack.com/Faresfero/shm-mods/refs/heads/main/New%20Project(1).png",
@@ -37,7 +45,7 @@
             {
                 name: "Smash hit NULL",
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2pg8ZlEDXd04EP_8_Mx6DYeDy-Bn7h6-LEXIlGb9TN4CpRpVAux-wBZiz01dQGsS9qVc&usqp=CAU",
-                invite: 5,
+                invite: 1,
                 link: "https://sites.google.com/view/shmodsx/mods/0002",
                 type: ["sh"]
             },
@@ -129,7 +137,7 @@
                     <div class="server-info">
                         <a href="${server.link}" target="_blank" rel="noopener noreferrer" class="server-name">${server.name}</a>
                         <div class="server-invite">${userInfoHTML}</div>
-                        <a href="${server.link}" target="_blank" rel="noopener noreferrer" class="join-btn">Install!</a>
+                        <a href="${server.link}" target="_blank" rel="noopener noreferrer" class="join-btn">View!</a>
                     </div>
                 `;
                 serverList.appendChild(card);
